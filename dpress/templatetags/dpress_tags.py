@@ -15,8 +15,9 @@ def md(_md):
 @register.inclusion_tag("dpress/tags/dummy.html")
 def last_post(template='dpress/widgets/lastposts.html'):
     lastposts = Post.objects.filter(status=2).select_related().order_by("-publish")
+    print("template=%s" % template)
     return {
-        "template": template,
+        "template1": template,
         'lastposts': lastposts[:5]
     }
 
@@ -24,7 +25,7 @@ def last_post(template='dpress/widgets/lastposts.html'):
 @register.inclusion_tag("dpress/tags/dummy.html")
 def month_links(template="dpress/widgets/monthlinks.html"):
     return {
-        "template": template,
+        "template1": template,
         'dates': Post.objects.filter(status=2).dates('publish', 'month')[:12],
     }
 
@@ -32,6 +33,6 @@ def month_links(template="dpress/widgets/monthlinks.html"):
 @register.inclusion_tag("dpress/tags/dummy.html")
 def categorys(template="dpress/widgets/categorys.html"):
     return {
-        "template": template,
+        "template1": template,
         'categorys': Category.objects.order_by("title"),
     }

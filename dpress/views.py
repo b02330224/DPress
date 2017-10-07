@@ -11,20 +11,22 @@ def index(request, username=None, tag=None, year=None, month=None,
           category=None, template_name="dpress/index.html"):
     posts = Post.objects.filter(status=2)
     ctx = {}
+    print("tag=%s" % tag)
     if tag:
         ctx['tag'] = get_object_or_404(Tag, name=tag)
         posts = posts.filter(tags__name__in=[tag])
     if year and month:
         posts, t_context = archive_month_filter(year, month, posts, 'publish')
         ctx.update(t_context)
-
+    print("category=%s" % category)
     if category:
         posts = posts.filter(category__slug=category)
-
+    print("posts=%s" % posts)
     if username:
         posts = posts.filter(author__username=username)
     posts = posts.order_by("-publish")
     ctx['posts'] = posts
+    print("ctx=%s" % ctx)
     return render(request, template_name, ctx)
 
 

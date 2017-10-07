@@ -5,10 +5,12 @@
 {% load dpress_tags %}
 {% load lbutils %}
 
+
 <div class="contents">
 {% block contents %}
+
     {% if tag %}
-        <h2>{% trans "Posts Tagged" %}: {{tag}}</h2>
+     <h2>{% trans "Posts Tagged" %}: {{tag}}</h2> 
     {% endif %}
 
     {% if archive_month %}

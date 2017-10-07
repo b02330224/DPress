@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     'django.contrib.admin',
 
     'taggit',
+    
     'el_pagination',
     'lbutils',
     'pagedown',
 
     'dpress_site',
     'dpress',
+    'taggit_templatetags2',
 ]
 
 MIDDLEWARE = [

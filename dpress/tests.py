@@ -23,8 +23,10 @@ class ViewsSimpleTest(ViewsBaseCase):
 
     def test_tag(self):
         resp = self.client.get(reverse('dpress_tag', args=("testtag", )))
+        print("url=%s" % reverse('dpress_tag', args=("testtag", )) )
         self.assertEqual(resp.status_code, 200)
         resp = self.client.get(reverse('dpress_tag', args=("notag", )))
+        print("url=%s" % reverse('dpress_tag', args=("notag", )) )
         self.assertEqual(resp.status_code, 404)
 
     def test_post(self):
